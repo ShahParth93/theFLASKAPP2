@@ -1,0 +1,18 @@
+version : "3.8"
+services :
+    flaskapp :
+        build: .
+        ports:
+          - "1536:5000"
+        depends_on:
+          - postgres
+
+    postgres:
+        image: "postgres"
+        environment:
+          - POSTGRES_USER=user
+          - POSTGRES_PASSWORD=secret
+          - POSTGRES_DB=testdb
+          - USE_POSTGRES=true
+        restart: always
+        
